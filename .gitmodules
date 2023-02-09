@@ -1,0 +1,9 @@
+[submodule "girgs"]
+	path = girgs
+	url = https://github.com/chistopher/girgs.git
+[submodule "htd"]
+	path = htd
+	url = https://github.com/mabseher/htd.git
+[submodule "findminhs"]
+	path = findminhs
+	url = https://github.com/Felerius/findminhs.git
