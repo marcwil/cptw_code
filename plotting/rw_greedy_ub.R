@@ -315,7 +315,11 @@ clustering_standalone <- weighted_treewidth %>%
   inner_join(rwstats, by=c("graph", "m", "n")) %>%
   ggplot(aes(x = clustering, y = weighted_tw / (treewidth+1))) +
   geom_hex(bins=20) +
-  scale_fill_viridis(option='C') +
+  scale_fill_viridis(
+    option='C',
+    trans = "log",
+    breaks = c(1, 2, 4, 8, 32, 128)
+  ) +
   labs(
     x = "Clustering coeff. (global)",
     y = "cptw / (tw + 1)") +

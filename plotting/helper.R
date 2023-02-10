@@ -28,12 +28,18 @@ rename_partition_option <- function(df){
              partition_option =="MinHSPartition(HittingSet(HSBranchReduce))" ~ "SC",
              partition_option =="MinHSPartition(HittingSet(GurobiHS))" ~ "HSGRB",
              partition_option =="WeightedHSPartition" ~ "WSC"
-           )))
+           )) %>%
+         mutate(
+           partition_option = as.factor(partition_option)
+         )
+         )
 }
 
 ### Theme stuff taken from https://github.com/thobl/external-validity/blob/main/R/helper/theme.R
 ## general theme
 theme_set(theme_bw())
+
+theme_update(plot.margin = margin(t=0.1,r=0.1,b=0.1,l=0.1, unit="cm"))
 
 ## latex font
 font_add("LM Roman", "lmroman10-regular.otf")

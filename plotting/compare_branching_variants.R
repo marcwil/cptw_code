@@ -123,13 +123,14 @@ compare_redrules_data <- branching_variants %>%
   mutate(no_errors=error_status=="none" &
            treewidth_status=="success" &
            partition_status=="success",
-         suf_weight_red = ifelse(sw_red=='SW', "with", "without")) %>%
+         suf_weight_red = factor(ifelse(sw_red=='SW', "with", "without"), levels = c("without", "with"))
+         ) %>%
   filter(graph_type=="girg" & no_errors==TRUE)
 redrules_box_plotting <- function(x) {
   return(
     ggplot(x, aes(x=lower_bounds, y=partition_time, color=suf_weight_red)) +
     geom_boxplot() +
-#    scale_color_hue(direction = -1, breaks = c("with", "without")) +
+#    scale_color_discrete(labels = c("with", "without")) + #(direction = -1, breaks = c("with", "without")) +
     labs(color="Sufficient weight reduction",
          x="Lower Bounds",
          y="Run time (s)",

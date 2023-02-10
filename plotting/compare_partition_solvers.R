@@ -47,22 +47,24 @@ df_renamed <- df %>%
 df_renamed <- rename_partition_option(df_renamed)
 
 df_compare_relative <- df_renamed %>%
-#  filter(n_gen==5000) %>%
+  filter(graph_type=="girg") %>%
+  filter(partition_option != "WSC") %>%
   mutate(no_errors=error_status=="none" &
            treewidth_status=="success" &
            partition_status=="success") %>%
-  filter(graph_type=="girg") %>%
-  filter(no_errors==TRUE) %>%
   group_by(n_gen, dimension, alpha, ple, seed) %>%
+  filter(sum(no_errors)==4) %>%  # only include instances where all solvers finished
   mutate(min_weight = min(weighted_treewidth),
          min_time = min(partition_time),
          weight_relative = weighted_treewidth / min_weight,
          time_relative = partition_time / min_time,
-         exact_group = case_when(
+         exact_group = factor(case_when(
            partition_option == "B&B" ~ "exact",
-           partition_option == "MC" | partition_option == "RMC" ~ "greedy",
-           TRUE ~ "hittingset"
-         ))
+           partition_option == "MC" ~ "MC",
+           partition_option == "RMC" ~ "RMC",
+           TRUE ~ "hittingset"), levels=c("exact", "MC", "RMC", "hittingset")
+         )
+         )
 
 boxplot_solver_quality <- df_compare_relative %>%
   ggplot(aes(x=partition_option, y=weight_relative, color = exact_group)) +
@@ -74,7 +76,8 @@ boxplot_solver_quality <- df_compare_relative %>%
     y = "cptw (rel.)",
   ) +
   theme(
-    legend.position = "none"
+    legend.position = "none",
+    axis.text = element_text(size = 6))
   )
 boxplot_solver_quality
 
@@ -87,13 +90,14 @@ compare_time_plot <- function(x) {
     geom_boxplot() +
     xlab("Partition Solver") +
     ylab("Run time (rel.)")
-    + scale_y_log10() +
+    + scale_y_log10(labels = scales::scientific) +
     annotation_logticks(sides='l',
                         alpha = 0.8,
                         long=unit(0.1, unit='cm'),
                         mid=unit(0.07, unit='cm'),
                         short=unit(0.05, unit='cm')) +
-    theme(legend.position = "none")
+    theme(legend.position = "none",
+          axis.text = element_text(size = 6))
   )
 }
 
@@ -113,6 +117,8 @@ boxplot_solver_time_large
 create_pdf("../output.pdf/boxplot_solver_quality.pdf", boxplot_solver_quality, width=0.49, height = 0.37)
 create_pdf("../output.pdf/boxplot_solver_time.pdf", boxplot_solver_time, width=0.49, height = 0.37)
 create_pdf("../output.pdf/boxplot_solver_time_large.pdf", boxplot_solver_time_large)
+create_pdf("../output.pdf/boxplot_solver_quality_small.pdf", boxplot_solver_quality, width=0.30, height = 0.25)
+create_pdf("../output.pdf/boxplot_solver_time_small.pdf", boxplot_solver_time, width=0.30, height = 0.25)
 
                                         # compare partition options
 #df_renamed %>%
@@ -213,17 +219,31 @@ plot_num_solved <- df_renamed %>%
     num_finished = sum(no_errors)) %>%
   ggplot(aes(x=partition_option, y = num_finished, fill=as.factor(n_gen))) +
   geom_bar(stat="identity") +
+  scale_fill_brewer() +
   labs(
-    x = "Partition option",
+    x = "Partition solver",
     y = "# Solved instances",
-    fill = "Vertex count"
+    fill = "n"
   ) +
   theme(
-    legend.position = "top",
+    legend.position = "none",
     legend.margin = margin(t=0, b=0, unit='cm'),
     legend.box.spacing = unit(0.1, 'cm'),
+    axis.text.x = element_text(size = 6),
   )
 plot_num_solved
+create_pdf("../output.pdf/barplot_num_solved.pdf", plot_num_solved, width=0.30, height = 0.25)
+
+df_renamed %>%
+  filter(alpha != 1.375,
+         alpha != 1.75) %>%
+  mutate(no_errors=error_status=="none" &
+           treewidth_status=="success" &
+           partition_status=="success") %>%
+  group_by(partition_option) %>%
+  summarise(
+    num_total = n(),
+    num_finished = sum(no_errors))
 
 stats_renamed <- get_girg_stats()
 
@@ -268,8 +288,10 @@ plot_params_wtw <- weight_and_stats %>%
   group_by(ple, alpha) %>%
   summarise(mean_wtw = mean(weighted_tw),
             mean_max_clique_num = mean(num_clique)) %>%
-  ggplot(aes(x=ple, y=mean_wtw, color=alpha, shape=alpha)) +
+  ungroup() %>%
+  ggplot(aes(x=ple, y=mean_wtw, color=alpha, shape=alpha, group=alpha)) +
   geom_point(size=2) +
+  geom_line() +
   scale_y_log10() +
   annotation_logticks(sides='l',
                       alpha = 0.8,
@@ -278,7 +300,7 @@ plot_params_wtw <- weight_and_stats %>%
                       short=unit(0.05, unit='cm')) +
   labs(
     x=NULL,
-    y="cptw",
+    y="cp-treewidth",
     size="alpha",
     shape="alpha",
   )
@@ -290,8 +312,9 @@ plot_params_sol_size <- weight_and_stats %>%
   summarise(
     max_part_num = mean(max_part_num)
   ) %>%
-  ggplot(aes(x=ple, y=max_part_num, color=alpha, shape=alpha)) +
+  ggplot(aes(x=ple, y=max_part_num, color=alpha, shape=alpha, group=alpha)) +
   geom_point(size=2) +
+  geom_line() +
   scale_y_log10() +
   annotation_logticks(sides='l',
                       alpha = 0.8,
@@ -313,8 +336,9 @@ plot_params_num_clique <- weight_and_stats %>%
   group_by(ple, alpha) %>%
   summarise(mean_wtw = mean(weighted_tw),
             mean_max_clique_num = mean(num_clique)) %>%
-  ggplot(aes(x=ple, y=mean_max_clique_num, color=alpha, shape=alpha)) +
+  ggplot(aes(x=ple, y=mean_max_clique_num, color=alpha, shape=alpha, group=alpha)) +
   geom_point(size=2) +
+  geom_line() +
   labs(
     x=NULL,
     y="Clique count",
@@ -332,8 +356,9 @@ plot_params_instance_size <- stats2_df %>%
          alpha != 1.75) %>%
   group_by(ple, alpha) %>%
   summarise(mean_instance_size = mean(largest_bag_cc)) %>%
-  ggplot(aes(x=ple, y=mean_instance_size, color=alpha, shape=alpha)) +
+  ggplot(aes(x=ple, y=mean_instance_size, color=alpha, shape=alpha, group=alpha)) +
   geom_point(size=2) +
+  geom_line() +
   scale_y_log10() +
   annotation_logticks(sides='l',
                       alpha = 0.8,
@@ -369,10 +394,10 @@ plot_params_stast3
 
 create_pdf("../output.pdf/plot_params_stats3.pdf", plot_params_stast3, width=1)
 
-plot_params_stats4 <- ((plot_params_wtw |
-  plot_params_num_clique |
+plot_params_stats4 <- ((plot_params_num_clique |
   plot_params_instance_size |
-  plot_params_sol_size) / blanklabelplot ) +
+  plot_params_sol_size |
+  plot_params_wtw) / blanklabelplot ) +
   plot_layout(guides = "collect", heights = c(1000,1)) &
   scale_color_discrete() &
   theme(
