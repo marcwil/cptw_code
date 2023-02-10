@@ -1,0 +1,2 @@
+n,orig_n,girg_options,spec,algo:max_weight,time_total
+553603,822004,seed=1809171 alpha=0.55 t=0.1 coords=True,algo:part_treedec,54.488641713775834,645.356873

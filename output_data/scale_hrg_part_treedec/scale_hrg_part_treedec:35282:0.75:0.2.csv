@@ -1,0 +1,11 @@
+n,orig_n,girg_options,spec,algo:max_weight,time_total
+34673,35282,seed=1022449 alpha=0.75 t=0.2 coords=True,algo:part_treedec,28.013453536053397,23.276221
+34497,35282,seed=1022450 alpha=0.75 t=0.2 coords=True,algo:part_treedec,26.43045255166553,22.149418
+34688,35282,seed=1022451 alpha=0.75 t=0.2 coords=True,algo:part_treedec,25.890596788267864,37.723805
+34915,35282,seed=1022452 alpha=0.75 t=0.2 coords=True,algo:part_treedec,25.224020521993054,126.478497
+34843,35282,seed=1022453 alpha=0.75 t=0.2 coords=True,algo:part_treedec,27.890596788267864,76.112314
+34476,35282,seed=1022454 alpha=0.75 t=0.2 coords=True,algo:part_treedec,24.58064133504658,18.038549
+34388,35282,seed=1022455 alpha=0.75 t=0.2 coords=True,algo:part_treedec,21.446412943329506,21.134933
+34644,35282,seed=1022456 alpha=0.75 t=0.2 coords=True,algo:part_treedec,24.384244122243075,43.272354
+34689,35282,seed=1022457 alpha=0.75 t=0.2 coords=True,algo:part_treedec,27.829196243603718,32.179197
+34529,35282,seed=1022458 alpha=0.75 t=0.2 coords=True,algo:part_treedec,22.253767865387104,24.632146

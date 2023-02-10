@@ -1,0 +1,12 @@
+n,orig_n,girg_options,spec,blowup:in_n,blowup:out_n,contraction:in_n,contraction:out_n,partition:amount,partition:average,partition:largest,partition:median,partition:smallest,treewidth:treewidth,time_total,time_partition,time_contraction,time_blowup,time_treewidth
+4312,4325,seed=4335 alpha=0.95 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,1437,3656,4312,1437,1437,3.000695894224078,15,2,1,32,0.452845,0.033526,0.005016,0.008714,0.405589
+4260,4325,seed=4336 alpha=0.95 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,1411,3596,4260,1411,1411,3.0191353649893693,13,2,1,31,0.630544,0.037449,0.005263,0.009231,0.578601
+4279,4325,seed=4337 alpha=0.95 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,1408,3574,4279,1408,1408,3.0390625,19,2.0,1,31,0.480228,0.037799,0.00492,0.008777,0.428732
+4213,4325,seed=4338 alpha=0.95 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,1406,3581,4213,1406,1406,2.9964438122332857,14,2.0,1,35,0.452643,0.033607,0.004733,0.008727,0.405576
+4272,4325,seed=4339 alpha=0.95 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,1416,3606,4272,1416,1416,3.016949152542373,14,2.0,1,31,0.549393,0.037273,0.004929,0.009221,0.49797
+4271,4325,seed=4340 alpha=0.95 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,1402,3589,4271,1402,1402,3.0463623395149786,15,2.0,1,35,0.447987,0.034308,0.004834,0.00854,0.400305
+4266,4325,seed=4341 alpha=0.95 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,1435,3645,4266,1435,1435,2.972822299651568,15,2,1,30,0.410211,0.032219,0.005136,0.00825,0.364606
+4271,4325,seed=4342 alpha=0.95 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,1437,3636,4271,1437,1437,2.9721642310368823,14,2,1,35,0.472107,0.034106,0.004902,0.009009,0.42409
+4197,4325,seed=4343 alpha=0.95 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,1409,3586,4197,1409,1409,2.978708303761533,14,2,1,27,0.39584,0.030394,0.004611,0.007725,0.35311
+4266,4325,seed=4344 alpha=0.95 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,1429,3636,4266,1429,1429,2.985304408677397,13,2,1,35,0.539476,0.035328,0.004852,0.008902,0.490394
+4289,4325,seed=4345 alpha=0.95 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,1416,3621,4289,1416,1416,3.028954802259887,16,2.0,1,36,0.46958,0.034122,0.004871,0.008808,0.421779

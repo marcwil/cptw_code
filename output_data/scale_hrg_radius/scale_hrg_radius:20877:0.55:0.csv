@@ -1,0 +1,9 @@
+n,orig_n,girg_options,spec,contraction:avg_deg,contraction:in_n,contraction:largest_clique,contraction:max_deg,contraction:out_n,partition:amount,partition:average,partition:largest,partition:median,partition:smallest,weighted_treewidth:treewidth,time_total,time_partition,time_contraction,time_weighted_treewidth
+12818,20877,seed=20977 alpha=0.55 t=0.0 coords=True,partition:max_radius weighted_treewidth:htd,5.90072202166065,12818,36,1634,8864,8864,1.4460740072202165,6,1.0,1,83,2.754982,0.046579,0.020701,2.687702
+11629,20877,seed=20978 alpha=0.55 t=0.0 coords=True,partition:max_radius weighted_treewidth:htd,4.970883534136546,11629,27,839,7968,7968,1.4594628514056225,5,1.0,1,67,1.748158,0.043797,0.017232,1.687129
+13506,20877,seed=20979 alpha=0.55 t=0.0 coords=True,partition:max_radius weighted_treewidth:htd,5.4276008492569,13506,26,3709,9420,9420,1.4337579617834395,5,1.0,1,63,3.068715,0.050238,0.020895,2.997582
+13270,20877,seed=20980 alpha=0.55 t=0.0 coords=True,partition:max_radius weighted_treewidth:htd,5.888,13270,35,2297,9250,9250,1.4345945945945946,5,1.0,1,99,3.041009,0.054189,0.021047,2.965773
+15494,20877,seed=20981 alpha=0.55 t=0.0 coords=True,partition:max_radius weighted_treewidth:htd,6.747164419040814,15494,39,6300,11197,11197,1.3837635080825221,5,1,1,91,5.156788,0.065322,0.027305,5.064161
+12044,20877,seed=20982 alpha=0.55 t=0.0 coords=True,partition:max_radius weighted_treewidth:htd,5.512727272727273,12044,28,1993,8250,8250,1.4598787878787878,6,1.0,1,68,2.249411,0.045462,0.018589,2.18536
+14697,20877,seed=20983 alpha=0.55 t=0.0 coords=True,partition:max_radius weighted_treewidth:htd,5.863501483679525,14697,28,7020,10447,10447,1.4068153536900545,5,1,1,74,4.098704,0.056529,0.02394,4.018235
+13648,20877,seed=20984 alpha=0.55 t=0.0 coords=True,partition:max_radius weighted_treewidth:htd,5.964897704849933,13648,34,2564,9629,9629,1.4173849828642642,5,1,1,85,2.951965,0.048584,0.021995,2.881386

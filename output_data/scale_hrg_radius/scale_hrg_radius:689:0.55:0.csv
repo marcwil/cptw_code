@@ -1,0 +1,11 @@
+n,orig_n,girg_options,spec,contraction:avg_deg,contraction:in_n,contraction:largest_clique,contraction:max_deg,contraction:out_n,partition:amount,partition:average,partition:largest,partition:median,partition:smallest,weighted_treewidth:treewidth,time_total,time_partition,time_contraction,time_weighted_treewidth
+531,689,seed=789 alpha=0.55 t=0.0 coords=True,partition:max_radius weighted_treewidth:htd,3.5013123359580054,531,7,347,381,381,1.3937007874015748,4,1,1,14,0.058792,0.001898,0.000761,0.056133
+407,689,seed=790 alpha=0.55 t=0.0 coords=True,partition:max_radius weighted_treewidth:htd,4.029411764705882,407,10,106,272,272,1.4963235294117647,4,1.0,1,20,0.057354,0.001921,0.000762,0.054671
+347,689,seed=791 alpha=0.55 t=0.0 coords=True,partition:max_radius weighted_treewidth:htd,3.6566523605150216,347,8,145,233,233,1.4892703862660943,4,1,1,15,0.053001,0.001206,0.000493,0.051302
+446,689,seed=792 alpha=0.55 t=0.0 coords=True,partition:max_radius weighted_treewidth:htd,3.632258064516129,446,8,232,310,310,1.4387096774193548,4,1.0,1,15,0.024668,0.001597,0.000657,0.022414
+379,689,seed=793 alpha=0.55 t=0.0 coords=True,partition:max_radius weighted_treewidth:htd,4.448,379,9,79,250,250,1.516,4,1.0,1,18,0.025027,0.001291,0.000563,0.023173
+412,689,seed=794 alpha=0.55 t=0.0 coords=True,partition:max_radius weighted_treewidth:htd,3.7437722419928825,412,9,100,281,281,1.4661921708185053,4,1,1,18,0.048076,0.001452,0.000629,0.045995
+289,689,seed=795 alpha=0.55 t=0.0 coords=True,partition:max_radius weighted_treewidth:htd,2.771573604060914,289,6,90,197,197,1.467005076142132,5,1,1,11,0.015741,0.001011,0.00042,0.01431
+225,689,seed=796 alpha=0.55 t=0.0 coords=True,partition:max_radius weighted_treewidth:htd,3.25,225,6,46,144,144,1.5625,4,1.0,1,11,0.014506,0.000767,0.000336,0.013403
+375,689,seed=797 alpha=0.55 t=0.0 coords=True,partition:max_radius weighted_treewidth:htd,4.248995983935743,375,8,111,249,249,1.5060240963855422,5,1,1,15,0.047167,0.00132,0.000543,0.045304
+400,689,seed=798 alpha=0.55 t=0.0 coords=True,partition:max_radius weighted_treewidth:htd,3.807142857142857,400,8,160,280,280,1.4285714285714286,3,1.0,1,15,0.028571,0.001443,0.000587,0.026541

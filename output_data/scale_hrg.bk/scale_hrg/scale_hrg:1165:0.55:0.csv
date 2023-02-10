@@ -1,0 +1,12 @@
+n,orig_n,girg_options,spec,blowup:in_n,blowup:out_n,contraction:in_n,contraction:out_n,partition:amount,partition:average,partition:largest,partition:median,partition:smallest,treewidth:treewidth,time_total,time_partition,time_contraction,time_blowup,time_treewidth
+550,1165,seed=1175 alpha=0.55 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,377,790,550,377,377,1.4588859416445623,10,1,1,12,0.074401,0.001956,0.000743,0.000903,0.070799
+863,1165,seed=1176 alpha=0.55 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,632,1313,863,632,632,1.365506329113924,11,1.0,1,17,0.12619,0.003669,0.001254,0.001935,0.119332
+577,1165,seed=1177 alpha=0.55 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,396,835,577,396,396,1.457070707070707,10,1.0,1,11,0.081384,0.002038,0.000784,0.000955,0.077607
+702,1165,seed=1178 alpha=0.55 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,489,1020,702,489,489,1.4355828220858895,12,1,1,15,0.065146,0.002599,0.000966,0.001276,0.060305
+773,1165,seed=1179 alpha=0.55 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,559,1161,773,559,559,1.3828264758497317,14,1,1,13,0.115277,0.00334,0.001108,0.001468,0.109361
+635,1165,seed=1180 alpha=0.55 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,433,909,635,433,433,1.466512702078522,10,1,1,15,0.084439,0.002242,0.000852,0.001076,0.080269
+635,1165,seed=1181 alpha=0.55 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,439,916,635,439,439,1.4464692482915718,7,1,1,18,0.083653,0.002234,0.000854,0.001178,0.079387
+532,1165,seed=1182 alpha=0.55 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,353,745,532,353,353,1.5070821529745042,9,1,1,13,0.076392,0.002,0.000734,0.000934,0.072724
+584,1165,seed=1183 alpha=0.55 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,413,863,584,413,413,1.414043583535109,8,1,1,12,0.077731,0.002074,0.000778,0.000982,0.073897
+425,1165,seed=1184 alpha=0.55 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,282,598,425,282,282,1.5070921985815602,8,1.0,1,16,0.062835,0.001541,0.000591,0.000745,0.059958
+884,1165,seed=1185 alpha=0.55 t=0.0 coords=True,partition:fast_max_clique2 treewidth:htd,644,1338,884,644,644,1.3726708074534162,10,1.0,1,12,0.123611,0.003718,0.001238,0.001714,0.116941

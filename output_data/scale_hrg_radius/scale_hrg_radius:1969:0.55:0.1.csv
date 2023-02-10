@@ -1,0 +1,11 @@
+n,orig_n,girg_options,spec,contraction:avg_deg,contraction:in_n,contraction:largest_clique,contraction:max_deg,contraction:out_n,partition:amount,partition:average,partition:largest,partition:median,partition:smallest,weighted_treewidth:treewidth,time_total,time_partition,time_contraction,time_weighted_treewidth
+1352,1969,seed=2069 alpha=0.55 t=0.1 coords=True,partition:max_radius weighted_treewidth:htd,4.367816091954023,1352,12,539,957,957,1.412748171368861,4,1,1,25,0.14297,0.013955,0.005641,0.123374
+1132,1969,seed=2070 alpha=0.55 t=0.1 coords=True,partition:max_radius weighted_treewidth:htd,4.2879788639365914,1132,11,111,757,757,1.4953764861294583,4,1,1,26,0.126144,0.011359,0.004528,0.110257
+979,1969,seed=2071 alpha=0.55 t=0.1 coords=True,partition:max_radius weighted_treewidth:htd,3.95738203957382,979,9,148,657,657,1.4901065449010655,5,1,1,18,0.093726,0.00988,0.004055,0.079791
+1281,1969,seed=2072 alpha=0.55 t=0.1 coords=True,partition:max_radius weighted_treewidth:htd,5.248306997742664,1281,15,459,886,886,1.445823927765237,5,1.0,1,30,0.150973,0.01322,0.005417,0.132336
+1269,1969,seed=2073 alpha=0.55 t=0.1 coords=True,partition:max_radius weighted_treewidth:htd,5.225225225225225,1269,14,571,888,888,1.429054054054054,4,1.0,1,31,0.156267,0.013101,0.005523,0.137643
+1065,1969,seed=2074 alpha=0.55 t=0.1 coords=True,partition:max_radius weighted_treewidth:htd,4.615595075239398,1065,13,176,731,731,1.456908344733242,4,1,1,28,0.112846,0.010913,0.004411,0.097522
+1112,1969,seed=2075 alpha=0.55 t=0.1 coords=True,partition:max_radius weighted_treewidth:htd,5.1735099337748345,1112,16,206,755,755,1.4728476821192054,6,1,1,33,0.128496,0.011608,0.004701,0.112187
+1379,1969,seed=2076 alpha=0.55 t=0.1 coords=True,partition:max_radius weighted_treewidth:htd,4.398785425101215,1379,11,699,988,988,1.395748987854251,4,1.0,1,23,0.143712,0.01471,0.005842,0.12316
+1432,1969,seed=2077 alpha=0.55 t=0.1 coords=True,partition:max_radius weighted_treewidth:htd,5.285296981499513,1432,16,608,1027,1027,1.394352482960078,6,1,1,36,0.179891,0.015262,0.006274,0.158355
+1298,1969,seed=2078 alpha=0.55 t=0.1 coords=True,partition:max_radius weighted_treewidth:htd,5.031624863685932,1298,14,541,917,917,1.415485278080698,5,1,1,31,0.159946,0.011945,0.00486,0.143141
