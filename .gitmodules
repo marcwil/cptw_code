@@ -6,4 +6,4 @@
 	url = https://github.com/mabseher/htd.git
 [submodule "findminhs"]
 	path = findminhs
-	url = https://github.com/Felerius/findminhs.git
+	url = https://github.com/marcwil/findminhs.git
