@@ -199,6 +199,7 @@ class HTD(Action):
 
         t = parse_tree_dec(lines)
         annotate_bags(g, t)
+        self.set_stat('status', 'success')
 
         return (g, t)
 

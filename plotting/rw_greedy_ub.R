@@ -1,37 +1,22 @@
 source("helper.R")
-source("girg_stats.R")
+source("data_helper.R")
 
 tbl <- read.csv("../output_data/rw_greedy_ub.csv")
 tbl <- tibble(tbl)
 
+tbl <- prepare_data(tbl)
 
-weighted_treewidth <- tbl %>%
-  transmute(
-    graph = GraphInput.graph,
-    m = GraphInput.m,
-    n = GraphInput.n,
-    avg_deg = 2*m/n,
-    time_total = time,
-    time_treewidth = Treewidth.time,
-    time_partitionbags = PartitionBags.time,
-    weighted_tw = PartitionBags.max_weight,
-    treewidth = Treewidth.treewidth,
-    clique_number = Treewidth.clique_number,
-    max_part_num = PartitionBags.max_partition_num,
-    mean_part_num = PartitionBags.mean_partition_num,
-    median_part_num = PartitionBags.median_partition_num
-  )
+weighted_treewidth <- tbl
 
 
-
-rwstats <- get_rw_stats()
+rwstats <- read_data("../output_data/rw_stats.csv")
 
 rw_upper_bounds <- weighted_treewidth %>%
   filter(m>10) %>%
   inner_join(rwstats, by=c("graph", "m", "n")) %>%
   ggplot(aes(
     x = treewidth,
-    y = weighted_tw,
+    y = weighted_treewidth,
     color = clustering,
   )) +
   geom_point(size=0.3) +
@@ -62,11 +47,11 @@ tbl <- weighted_treewidth %>%
   inner_join(rwstats, by=c("graph", "m", "n")) %>%
   mutate(small = m<1000,
          small_tw = treewidth <= 20,
-         small_wtw = weighted_tw <= 20,
-         wtw_cmp_0.9 = weighted_tw <= treewidth*0.9,
-         wtw_cmp_0.5 = weighted_tw <= treewidth*0.5,
-         wtw_cmp_0.3 = weighted_tw <= treewidth*0.3,
-         wtw_cmp_0.1 = weighted_tw <= treewidth*0.1,
+         small_wtw = weighted_treewidth <= 20,
+         wtw_cmp_0.9 = weighted_treewidth <= treewidth*0.9,
+         wtw_cmp_0.5 = weighted_treewidth <= treewidth*0.5,
+         wtw_cmp_0.3 = weighted_treewidth <= treewidth*0.3,
+         wtw_cmp_0.1 = weighted_treewidth <= treewidth*0.1,
          clustering_high = clustering > 0.5) %>%
   pivot_longer(
     c(small,
@@ -79,8 +64,8 @@ tbl <- weighted_treewidth %>%
     num = n(),
     num_tw_10 = sum(treewidth<=10),
     num_tw_20 = sum(treewidth<=20),
-    num_wtw_10 = sum(weighted_tw<=10),
-    num_wtw_20 = sum(weighted_tw<=20),
+    num_wtw_10 = sum(weighted_treewidth<=10),
+    num_wtw_20 = sum(weighted_treewidth<=20),
     "n (mean)" = mean(n),
     "m (mean)" = mean(m),
   )
@@ -112,7 +97,7 @@ rw_upper_bounds_m <- weighted_treewidth %>%
   inner_join(rwstats, by=c("graph", "m", "n")) %>%
   ggplot(aes(
     x = m,
-    y = weighted_tw,
+    y = weighted_treewidth,
 #    color = clustering,
   )) +
   geom_point(size=0.3) +
@@ -146,8 +131,8 @@ rw_ub_het_loc_wtw <- weighted_treewidth %>%
   ggplot(aes(
     x = deg_cov,
     y = clustering,
-#    size = weighted_tw / (treewidth+1),
-    color = weighted_tw / (treewidth+1)
+#    size = weighted_treewidth / (treewidth+1),
+    color = weighted_treewidth / (treewidth+1)
   )) +
   geom_point() +
   scale_color_viridis() +
@@ -178,7 +163,7 @@ rw_ub_wtw_clustering <- weighted_treewidth %>%
 #    x = num_clique / m,
   #   x = log(num_clique) / log(m),
     x = clustering,
-    color = weighted_tw / (treewidth+1) < 0.25,
+    color = weighted_treewidth / (treewidth+1) < 0.25,
   )) +
 #  scale_x_log10() +
   geom_density() +
@@ -213,7 +198,7 @@ create_pdf("../output.pdf/rw_ub_wtw_clustering.pdf", rw_ub_wtw_clustering, width
 avg_deg_plt <- weighted_treewidth %>%
   filter(m>10) %>%
   inner_join(rwstats, by=c("graph", "m", "n")) %>%
-  ggplot(aes(x = avg_deg.y, y = weighted_tw / (treewidth+1))) +
+  ggplot(aes(x = avg_deg, y = weighted_treewidth / (treewidth+1))) +
   geom_hex(bins=15) +
   scale_fill_viridis(limits = c(0, 600)) +
     scale_x_log10() +
@@ -230,7 +215,7 @@ avg_deg_plt
 deg_cov_plt <- weighted_treewidth %>%
     filter(m>10) %>%
     inner_join(rwstats, by=c("graph", "m", "n")) %>%
-    ggplot(aes(x = deg_cov, y = weighted_tw / (treewidth+1))) +
+    ggplot(aes(x = deg_cov, y = weighted_treewidth / (treewidth+1))) +
     geom_hex(bins=15) +
   scale_fill_viridis(limits = c(0, 600)) +
     scale_x_log10() +
@@ -245,7 +230,7 @@ deg_cov_plt <- weighted_treewidth %>%
 clustering_plt <- weighted_treewidth %>%
     filter(m>10) %>%
     inner_join(rwstats, by=c("graph", "m", "n")) %>%
-    ggplot(aes(x = clustering, y = weighted_tw / (treewidth+1))) +
+    ggplot(aes(x = clustering, y = weighted_treewidth / (treewidth+1))) +
     geom_hex(bins=15) +
   scale_fill_viridis(limits = c(0, 600)) +
     xlab("Clustering coeff. (global)") +
@@ -254,7 +239,7 @@ clustering_plt <- weighted_treewidth %>%
 clique_count_rel_plt <- weighted_treewidth %>%
     filter(m>10) %>%
     inner_join(rwstats, by=c("graph", "m", "n")) %>%
-    ggplot(aes(x = num_clique / m, y = weighted_tw / (treewidth+1))) +
+    ggplot(aes(x = num_clique / m, y = weighted_treewidth / (treewidth+1))) +
     geom_hex(bins=15) +
   scale_fill_viridis(limits = c(0, 600)) +
     scale_x_log10() +
@@ -269,7 +254,7 @@ clique_count_rel_plt <- weighted_treewidth %>%
 clique_clique_count_exp_plt <- weighted_treewidth %>%
     filter(m>10) %>%
     inner_join(rwstats, by=c("graph", "m", "n")) %>%
-    ggplot(aes(x = log(num_clique) / log(m), y = weighted_tw / (treewidth+1))) +
+    ggplot(aes(x = log(num_clique) / log(m), y = weighted_treewidth / (treewidth+1))) +
     geom_hex(bins=15) +
   scale_fill_viridis(limits = c(0, 600)) +
     xlab("log_m(Clique count)") +
@@ -278,7 +263,7 @@ clique_clique_count_exp_plt <- weighted_treewidth %>%
 clique_clique_number_exp_plt <- weighted_treewidth %>%
     filter(m>10) %>%
     inner_join(rwstats, by=c("graph", "m", "n")) %>%
-    ggplot(aes(x = log(clique_number) / log(m), y = weighted_tw / (treewidth+1))) +
+    ggplot(aes(x = log(largest_clique) / log(m), y = weighted_treewidth / (treewidth+1))) +
     geom_hex(bins=15) +
   scale_fill_viridis(limits = c(0,600)) +
     xlab("log_m(Clique number)") +
@@ -313,7 +298,7 @@ create_pdf("../output.pdf/rw_wtw_vs_stats.pdf", rw_wtw_vs_stats, width=1, height
 clustering_standalone <- weighted_treewidth %>%
 #    filter(m>10) %>%
   inner_join(rwstats, by=c("graph", "m", "n")) %>%
-  ggplot(aes(x = clustering, y = weighted_tw / (treewidth+1))) +
+  ggplot(aes(x = clustering, y = weighted_treewidth / (treewidth+1))) +
   geom_hex(bins=20) +
   scale_fill_viridis(
     option='C',
@@ -335,7 +320,7 @@ create_pdf("../output.pdf/rw_clustering_standalone.pdf", clustering_standalone, 
 
 
 #weighted_treewidth %>%
-#  pivot_longer(c(treewidth, weighted_tw, clique_number),
+#  pivot_longer(c(treewidth, weighted_treewidth, clique_number),
 #               names_to = "property") %>%
 #    ggplot(aes(x = m, y = value, color=property)) +
 #    geom_point()
@@ -345,7 +330,7 @@ create_pdf("../output.pdf/rw_clustering_standalone.pdf", clustering_standalone, 
 #  filter(m>10) %>%
 #  ggplot(aes(
 #    x = clique_number / (treewidth+1),
-#    y = weighted_tw / (treewidth+1),
+#    y = weighted_treewidth / (treewidth+1),
 #    size = m,
 #    color = avg_deg
 #  )) +
@@ -363,7 +348,7 @@ create_pdf("../output.pdf/rw_clustering_standalone.pdf", clustering_standalone, 
 #  filter(m>10) %>%
 #  ggplot(aes(
 #    x = treewidth,
-#    y = weighted_tw / (treewidth+1),
+#    y = weighted_treewidth / (treewidth+1),
 #    size = m,
 #    color = avg_deg
 #  )) +

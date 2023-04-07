@@ -1,5 +1,6 @@
 #!/bin/bash
-# remove isomorphic networks
+
+# remove graphs that are isomorphic to other graphs
 rm "./input_data/edge_lists_real/tube2" \
     "./input_data/edge_lists_real/n3c5-b5" \
     "./input_data/edge_lists_real/rt_oman" \

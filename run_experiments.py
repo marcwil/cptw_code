@@ -136,10 +136,12 @@ add_rw_exp(
         "Partition:[[partition_solver]]",
         f"PartitionBags(timeout={5*60})",
         f"BranchingPartition(timeout={60*3})",
+        "HittingSet:david",
+        "HSBranchReduce(timeout=180)",
     ],
     {
         'graph': rw_graphs,
-        'partition_solver': ['lc_repeat', 'flc', 'branch']
+        'partition_solver': ['lc_repeat', 'flc', 'branch', 'hs']
     },
     ['partition_solver']
 )
