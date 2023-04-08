@@ -7,8 +7,8 @@ docker save -o cptw.tar cptw
 
 echo "Creating data directories.."
 mkdir -p ./data/input_data/
-mkdir ./data/output_data/
-mkdir ./data/plots/
+mkdir -p ./data/output_data/
+mkdir -p ./data/plots/
 
 echo "Copying stuff.."
 mkdir cptw

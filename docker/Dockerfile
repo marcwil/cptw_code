@@ -44,10 +44,10 @@ RUN R -e 'library(readr)'
 ## 
 # Copy own code to repo
 ## 
-ADD ./p_flattened_treewidth/code /cptw
+#ADD ./p_flattened_treewidth/code /cptw
 # download public key for github.com
 #ADD git@git.scc.kit.edu:scale/research/p_flattened_treewidth.git /cptw
-#RUN git clone --recursive https://github.com/marcwil/cptw_code /cptw
+RUN git clone --recursive https://github.com/marcwil/cptw_code /cptw
 #WORKDIR /cptw
 #RUN git submodule init
 #RUN git submodule update
@@ -77,6 +77,6 @@ run cmake ..
 run make
 WORKDIR /cptw/
 
-
+RUN chmod -R a+X /cptw & chmod -R o+w /cptw
 
 ENTRYPOINT tail -f /dev/null
