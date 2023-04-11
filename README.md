@@ -1,4 +1,4 @@
-# CPTW Code
+# CPTW Code [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7816985.svg)](https://doi.org/10.5281/zenodo.7816985)
 
 Code and plotting scripts for the paper
 
