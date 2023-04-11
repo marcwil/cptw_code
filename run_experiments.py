@@ -43,7 +43,7 @@ def add_rw_exp(name, filters, params, splitters=None):
 
 
 class RW_Names:
-    def __init__(self, persist_path="sizes.json"):
+    def __init__(self, persist_path="./input_data/sizes.json"):
         self.persist_path = persist_path
         if path.exists(persist_path):
             with open(persist_path) as data_file:

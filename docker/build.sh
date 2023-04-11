@@ -12,6 +12,7 @@ mkdir -p ./data/plots/
 
 echo "Copying stuff.."
 mkdir cptw
+cp -r data cptw/
 cp cptw.tar cptw/
 cp enter.sh cptw/
 cp kill.sh cptw/
