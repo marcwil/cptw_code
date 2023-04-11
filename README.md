@@ -88,7 +88,7 @@ Plotting scripts are under `plotting`, can be called using `Rscript
 
 To run all plotting scripts, execute `./generate_plots.sh`.
 
-## Experiment Setup
+## Explanation / Experiment Setup
 
 The experiments are run using a [run](https://github.com/thobl/run) configuration
 specified in `run_experiments.py`. Calling `python run_experiments.py` shows a
